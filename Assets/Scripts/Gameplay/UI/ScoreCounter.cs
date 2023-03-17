@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Gameplay.Player;
 using TMPro;
 using UnityEngine;
 
-namespace Gameplay.HUD
+namespace Gameplay.UI
 {
     public class ScoreCounter : MonoBehaviour
     {

@@ -12,6 +12,8 @@ namespace Gameplay
 
         private void FixedUpdate()
         {
+            if (Pause.Instance.IsPaused)
+                return;
             Transform.position += Vector3.left * _moveSpeed;
         }
 
