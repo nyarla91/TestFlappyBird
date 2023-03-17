@@ -1,4 +1,5 @@
-﻿using Extentions;
+﻿using System;
+using Extentions;
 using UnityEngine;
 using Zenject;
 
@@ -6,8 +7,12 @@ namespace Gameplay
 {
     public class PipeSection : Transformable
     {
+        [SerializeField] private Difficulty _difficulty;
         [SerializeField] private Transform _spawnPoint;
         [SerializeField] private Collider2D _yPositionRange;
+        [Space]
+        [SerializeField] private Transform _topPipe;
+        [SerializeField] private Transform _bottomPipe;
         [Space]
         [Tooltip("Units per second (positive)")] [SerializeField] private float _moveSpeed;
         
@@ -36,6 +41,16 @@ namespace Gameplay
                 y = _yPositionRange.bounds.RandomPoint().y
             };
             Transform.position = newPosition;
+        }
+
+        private void Start()
+        {
+            _moveSpeed *= _difficulty.CurrentLevel.PipesSpeedScale;
+            
+            float spacing = _difficulty.CurrentLevel.PipesSpacing;
+            Vector3 offset = Vector3.up * spacing / 2;
+            _topPipe.localPosition += offset;
+            _bottomPipe.localPosition -= offset;
         }
 
         private void OnValidate()

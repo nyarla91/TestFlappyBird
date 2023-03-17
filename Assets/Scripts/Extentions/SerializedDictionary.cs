@@ -9,8 +9,6 @@ namespace Extentions
     public class SerializedDictionary<TKey, TValue>
     {
         [SerializeField] private List<SerializedKeyValuePair<TKey, TValue>> _pairs;
-
-        private Dictionary<TKey, TValue> _dictionary;
         
         public List<SerializedKeyValuePair<TKey, TValue>> Pairs => _pairs;
 

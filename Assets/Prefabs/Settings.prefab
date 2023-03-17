@@ -47,12 +47,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _saveFileName: config
   _settings:
-    _dynamic: 1
     _pairs:
     - _key: sfxVolume
       _value: 5
     - _key: musicVolume
       _value: 5
+    - _key: difficulty
+      _value: 0
 --- !u!114 &4269099445424544052
 MonoBehaviour:
   m_ObjectHideFlags: 0
