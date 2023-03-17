@@ -1,11 +1,8 @@
 {
-    "name": "Infrastructure",
+    "name": "Settings",
     "rootNamespace": "",
     "references": [
-        "GUID:0d8beb7f090555447a6cf5ce9e54dbb4",
-        "GUID:8197c0d71382eb24ca4f0d9c41f6727e",
-        "GUID:c5c905231d3bb174fbc956e50ee677f8",
-        "GUID:9154095c00961fd4e8e50884fe0c17d0"
+        "GUID:8197c0d71382eb24ca4f0d9c41f6727e"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
