@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using UnityEngine;
 
 namespace Settings
@@ -9,7 +10,12 @@ namespace Settings
         {
             get
             {
-                string folderPath = Application.dataPath + "/PlayerData/";
+                string folder = "/PlayerData/";
+                string folderPath = Application.platform switch
+                {
+                    RuntimePlatform.Android => Application.temporaryCachePath + folder,
+                    _ => Application.dataPath + folder
+                };
                 if (!Directory.Exists(folderPath))
                     Directory.CreateDirectory(folderPath);
                 return folderPath;
