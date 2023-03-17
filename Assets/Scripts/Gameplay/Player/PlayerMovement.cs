@@ -1,6 +1,8 @@
 ﻿using System;
 using Extentions;
+using Gameplay.UI;
 using UnityEngine;
+using Zenject;
 
 namespace Gameplay.Player
 {
@@ -10,12 +12,20 @@ namespace Gameplay.Player
         [SerializeField] private float _jumpForce;
 
         private float VerticalSpeed { get; set; }
-
-        public event Action Jumped; 
         
-        public void Jump()
+        [Inject] private Pause Pause { get; set; }
+        
+        public event Action Jumped;
+
+        [Inject]
+        private void Construct(ScreenInput input)
         {
-            if (Pause.Instance.IsPaused)
+            input.JumpPressed += Jump;
+        }
+
+        private void Jump()
+        {
+            if (Pause.IsPaused)
                 return;
             
             VerticalSpeed = _jumpForce;
@@ -30,7 +40,7 @@ namespace Gameplay.Player
 
         private void Move()
         {
-            if (Pause.Instance.IsPaused)
+            if (Pause.IsPaused)
                 return;
             
             Transform.position += Vector3.up * VerticalSpeed;
@@ -38,7 +48,7 @@ namespace Gameplay.Player
 
         private void Fall()
         {
-            if (Pause.Instance.IsPaused)
+            if (Pause.IsPaused)
                 return;
             
             VerticalSpeed -= _gravity * Time.fixedDeltaTime;

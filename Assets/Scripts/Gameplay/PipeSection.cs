@@ -1,5 +1,6 @@
 ﻿using Extentions;
 using UnityEngine;
+using Zenject;
 
 namespace Gameplay
 {
@@ -9,10 +10,12 @@ namespace Gameplay
         [SerializeField] private Collider2D _yPositionRange;
         [Space]
         [Tooltip("Units per second (positive)")] [SerializeField] private float _moveSpeed;
-
+        
+        [Inject] private Pause Pause { get; set; }
+        
         private void FixedUpdate()
         {
-            if (Pause.Instance.IsPaused)
+            if (Pause.IsPaused)
                 return;
             Transform.position += Vector3.left * _moveSpeed;
         }

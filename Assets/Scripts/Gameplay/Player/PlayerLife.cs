@@ -13,12 +13,6 @@ namespace Gameplay.Player
                 return;
             
             HitObstacle?.Invoke();
-            Lose();
-        }
-
-        private void Lose()
-        {
-            print("Lost");
         }
     }
 }

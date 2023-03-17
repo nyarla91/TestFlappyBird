@@ -1,18 +1,22 @@
 ﻿using Gameplay.Player;
 using TMPro;
 using UnityEngine;
+using Zenject;
 
 namespace Gameplay.UI
 {
     public class ScoreCounter : MonoBehaviour
     {
         [SerializeField] private TMP_Text _counter;
-        [SerializeField] private PlayerScore _player;
         
-        
-        private void Awake()
+        [Inject]
+        private void Construct(PlayerScore playerScore)
         {
-            _player.PointsChanged += UpdateCounter;
+            playerScore.PointsChanged += UpdateCounter;
+        }
+        
+        private void Start()
+        {
             UpdateCounter(0);
         }
 

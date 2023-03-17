@@ -1,23 +1,24 @@
 ﻿using Gameplay.Player;
 using UI;
 using UnityEngine;
+using Zenject;
 
 namespace Gameplay.UI
 {
     public class LoseScreen : Menu
     {
-        [SerializeField] private PlayerLife _player;
-
-        protected override void Awake()
+        [Inject] private Pause Pause { get; set; }
+        
+        [Inject]
+        private void Construct(PlayerLife playerLife)
         {
-            base.Awake();
-            _player.HitObstacle += Open;
+            playerLife.HitObstacle += Open;
         }
 
         public override void Open()
         {
             base.Open();
-            Pause.Instance.PauseFromSource(this);
+            Pause.PauseFromSource(this);
         }
     }
 }

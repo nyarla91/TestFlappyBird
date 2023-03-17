@@ -7,8 +7,6 @@ namespace Gameplay
 {
     public class Pause : MonoBehaviour
     {
-        public static Pause Instance { get; private set; }
-        
         private readonly List<MonoBehaviour> _pauseSources = new List<MonoBehaviour>();
 
         public bool IsPaused => _pauseSources.Count > 0;
@@ -25,16 +23,6 @@ namespace Gameplay
             if ( ! _pauseSources.Contains(source))
                 return;
             _pauseSources.Remove(source);
-        }
-
-        private void Awake()
-        {
-            Instance = this;
-        }
-
-        private void OnDestroy()
-        {
-            Instance = null;
         }
     }
 }
