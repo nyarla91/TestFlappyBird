@@ -100,6 +100,7 @@ GameObject:
   - component: {fileID: 9165615722517586441}
   - component: {fileID: 9165615722517586443}
   - component: {fileID: 9165615722517586442}
+  - component: {fileID: 8438430219507995847}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -311,3 +312,17 @@ MonoBehaviour:
   _jumpSound: {fileID: 8300000, guid: 43755b9ca1b9b85498c180eeb6ffd1e2, type: 3}
   _hitSound: {fileID: 8300000, guid: 3244dcea0bbc0df44b5af49bccbfebab, type: 3}
   _scoreSound: {fileID: 8300000, guid: abd43560d726f1349aee3a9e17902d97, type: 3}
+--- !u!114 &8438430219507995847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9165615722517586483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d431d5117cca41b68f4cd42b84133571, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sprite: {fileID: 9165615722239875565}
+  _tiltForce: 15

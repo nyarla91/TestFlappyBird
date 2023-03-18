@@ -14,12 +14,12 @@ namespace Gameplay.Enviroment
         public float Speed => _difficulty.CurrentLevel.EnviromentSpeed;
 
         
-        public void RespawnElement(Transform element)
+        public void RespawnElement(Transform element, bool randomizeY)
         {
             Vector3 newPosition = new Vector3
             {
                 x = _spawnPoint.position.x,
-                y = _yPositionRange.bounds.RandomPoint().y
+                y = randomizeY ? _yPositionRange.bounds.RandomPoint().y : element.position.y
             };
             element.position = newPosition;
         }

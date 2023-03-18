@@ -11,7 +11,7 @@ namespace Gameplay.Player
         [Tooltip("Acceleration of fall speed per second (positive)")] [SerializeField] private float _gravity;
         [SerializeField] private float _jumpForce;
 
-        private float VerticalSpeed { get; set; }
+        public float VerticalSpeed { get; private set; }
         
         [Inject] private Pause Pause { get; set; }
         

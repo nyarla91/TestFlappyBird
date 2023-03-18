@@ -8,6 +8,7 @@ namespace Gameplay.Enviroment
     public class MovingEnviromentElement : Transformable
     {
         [SerializeField] private Enviroment _enviroment;
+        [SerializeField] private bool _randomizeY = true;
         
         [Inject] private Pause Pause { get; set; }
         
@@ -24,7 +25,7 @@ namespace Gameplay.Enviroment
         {
             if (other.gameObject.layer == LayerMask.NameToLayer("ScreenBound"))
             {
-                _enviroment.RespawnElement(Transform);
+                _enviroment.RespawnElement(Transform, _randomizeY);
                 Respawned?.Invoke();
             }
         }
