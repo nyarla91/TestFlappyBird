@@ -21,10 +21,10 @@ namespace Gameplay
     [Serializable]
     public class DifficultyLevel
     {
-        [SerializeField] private float _pipesSpeedScale = 1;
+        [SerializeField] private float _enviromentSpeed = 1;
         [SerializeField] private float _pipesSpacing;
 
-        public float PipesSpeedScale => _pipesSpeedScale;
+        public float EnviromentSpeed => _enviromentSpeed;
         public float PipesSpacing => _pipesSpacing;
     }
 }

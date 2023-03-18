@@ -52,6 +52,7 @@ namespace Boot
         public void onConversionDataFail(string error)
         {
             AppsFlyer.AFLog("onConversionDataFail", error);
+            _conversionTMP.text = "Ошибка в загрузкеы";
         }
 
         public void onAppOpenAttribution(string attributionData)
