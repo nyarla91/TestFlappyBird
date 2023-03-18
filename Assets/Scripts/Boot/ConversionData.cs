@@ -13,9 +13,11 @@ namespace Boot
         [SerializeField] private string _devKey;
         [SerializeField] private string _appID;
 
+        public event Action Loaded;
+
         private void Start()
         {
-            AppsFlyer.setIsDebug(true);
+            DontDestroyOnLoad(gameObject);
             AppsFlyer.OnRequestResponse += AppsFlyerOnRequestResponse;
             AppsFlyer.initSDK(_devKey, _appID, this);
             AppsFlyer.startSDK();
@@ -37,20 +39,24 @@ namespace Boot
         {
             AppsFlyer.AFLog("onConversionDataSuccess", conversionData);
             Dictionary<string, object> conversionDataDictionary = AppsFlyer.CallbackStringToDictionary(conversionData);
-            print("Hey");
-            _conversionTMP.text = conversionData;
+
+            StringBuilder conversionLog = new StringBuilder();
+            foreach (KeyValuePair<string,object> pair in conversionDataDictionary)
+            {
+                conversionLog.Append($"{pair.Key} : {pair.Value}\n");
+            }
+            _conversionTMP.text = conversionLog.ToString();
+            Loaded?.Invoke();
         }
 
         public void onConversionDataFail(string error)
         {
             AppsFlyer.AFLog("onConversionDataFail", error);
-            print("FAILO");
         }
 
         public void onAppOpenAttribution(string attributionData)
         {
             AppsFlyer.AFLog("onAppOpenAttribution", attributionData);
-            Dictionary<string, object> attributionDataDictionary = AppsFlyer.CallbackStringToDictionary(attributionData);
         }
 
         public void onAppOpenAttributionFailure(string error)
